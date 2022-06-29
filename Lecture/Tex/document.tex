@@ -1,0 +1,119 @@
+\documentclass[a4paper,12pt]{article}
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в фомулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\renewcommand{\baselinestretch}{1.5} % интервал между строками
+%%% Дополнительная работа с математикой
+\usepackage{amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{amsmath}
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Шрифты
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+
+%%% Заголовок
+\author{Vladimir Dimitrov}
+\title{Lecture DL}
+\date{}
+
+
+\begin{document}
+	\maketitle
+	\newpage
+	\tableofcontents
+	\newpage
+	\section{Lecture 1}
+	\textbf{Полносвязные слои (fully conected, FC)}: представляет набор линейных моделей
+	\begin{itemize}
+		\item На входе n чисел, на выходе m
+		\item $x_1, \ldots, x_n$  - входы
+		\item $z_1, \ldots, z_m$ - выходы
+		\item Каждый выход - линейная модель над входами:
+		$$
+			z_{j}=\sum_{i=1}^{n} w_{j i} x_{i}+b_{j}
+		$$
+	\end{itemize} 
+	
+	В такое модели nm параметров - надо много данных. После FC применяется нелинейная модель.
+	
+	
+	
+	\textbf{Нелинейный преобразования}:
+	\begin{itemize}
+		\item Сигмоида: $f(x)=\frac{1}{1+\exp (-x)}$ (проблема затухания градиента)
+		\item ReLU (Rectified Linear Unit): $f(x)=\max (0, x)$ 
+		
+	\end{itemize}
+	
+	Нелинейность можно брать одну и тоже.
+	
+	\textbf{Теорема Цыбенко}
+	
+	Пусть существует g(x) - непрерывная функция, тогда можно построить двухслойную нейронную сеть, приближающую g(x) с любой заранее заданной точностью. 
+	
+	\newpage
+	\section{Lecture 2}
+	\textbf{Обучение нейронной сети}
+	
+	Критерий остановы: ошибка на тестовой выборки перестает убывать (немного отличается чем в ML).
+	
+	В основе лежит метод обратной распространения ошибки (Backpropagation). Просто перемножение матриц.
+	
+	\textbf{Полносвязные сети для изображений}
+	
+	\textbf{Данные MNIST}
+	\begin{itemize}
+		\item Изображение 28 * 28
+		\item Изображения центрированы 
+		\item 60000 объектов в обучающей выборке
+	\end{itemize}
+	
+	Полносвязные сети плохо работают с картинками, так как: 
+	\begin{itemize}
+		\item Много параметров
+		\item Легко переобучиться 
+		\item Не учитывает специфику изображений
+		\item Один из способов бороться с переобучением - сократить число параметров
+	\end{itemize}
+
+	\textbf{Свертки}
+	
+	\begin{itemize}
+		\item Операция свертки выявляет наличие паттерна, который задается фильтром
+		\item Чем сильнее на участке изображения представлен паттерн, тем больше будет значение свертки
+	\end{itemize}
+	
+	Фильтр Собеля (Детекция границ):
+	$$\left[\begin{array}{rrr}+1 & 0 & -1 \\ +2 & 0 & -2 \\ +1 & 0 & -1\end{array}\right]$$
+	
+	
+	
+\end{document}
