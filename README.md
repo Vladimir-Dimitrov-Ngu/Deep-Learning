@@ -18,3 +18,7 @@ Picture            |  Mask
 **Task**: semantic segmentation. Guess the background, animal and 'dividing element'
 
 **Model**: Unet
+
+**Results:**
+
+![image](https://user-images.githubusercontent.com/84929000/215321341-55634f48-8216-404d-922c-8dc6860601d6.png)
