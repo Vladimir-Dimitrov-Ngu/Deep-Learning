@@ -26,3 +26,25 @@ Picture            |  Mask
 ![image](https://user-images.githubusercontent.com/84929000/215321385-392f834c-c5e2-48e8-8652-3f471ae996f9.png)
 
 ![image](https://user-images.githubusercontent.com/84929000/215321966-47947dcc-8ac2-459f-a8bf-5baf7524411c.png)
+
+
+2. Computer Vision. We have VOCDetection dataset in which there are the following pictures and bounding boxes:
+
+![image](https://user-images.githubusercontent.com/84929000/215387732-66c3901b-bf0f-4536-97cb-496574bd4604.png)
+
+![image](https://user-images.githubusercontent.com/84929000/215387764-568adda3-5024-4ba5-83d3-b031b7500d5d.png)
+
+![image](https://user-images.githubusercontent.com/84929000/215387778-932c1516-18a4-4431-b2e9-1f10b65297d7.png)
+
+
+**Task**: object detection. Guess 1 of 20 classes and frame it'
+
+**Model**: FastRCNNPredictor
+
+**Results:** Train mAP 0.68044 Valid mAP 0.37185
+
+![image](https://user-images.githubusercontent.com/84929000/215387861-61a4a377-fd02-4b5e-9b1c-f737e874e626.png)
+
+![image](https://user-images.githubusercontent.com/84929000/215387872-f6a94617-4825-4e96-b9c5-7ab9a7e45052.png)
+
+![image](https://user-images.githubusercontent.com/84929000/215387904-df645c28-acd7-465b-88ad-723b112349dd.png)
